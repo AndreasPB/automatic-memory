@@ -1,1 +1,2 @@
-# New test project, figured it out
+# Template for large systems assignments
+- Press `Use this template` and create you own version
