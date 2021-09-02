@@ -7,48 +7,40 @@ revealOptions:
 ---
 <!-- .slide: data-background-color="#4287f5" -->
 
-# Git
+![](https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg)
 
-### ☁️ 👉😎👉☁️
+---
+### Agenda
+- Useful commands
+- Practical usage of git
+- Exercises
 
 ---
 
 ### What is Git?
 <!-- .slide: data-background="https://media.giphy.com/media/ZaJtnTY8tFZz0PvmW9/giphy.gif" data-background-opacity="0.7" -->
-- version control
-- show useful commands when working together using git
-- no so much theory, but more practical usage of git
+- Version control
+  - Keep track of files over time
+  - Revert back to a previous state
+  - Compare changes
 
 ---
 
-### Commands
+### Commands 🤓
 
 A quick overview of some commands:
 
 ```bash
-git pull    # from remote to local
-git push    # to remote from local
-git add     # stage changes to a commit
-git commit  # commit staged changes
-git rebase  # rebase commits
-git reset   # reset HEAD
-git reflog  # view your git history
+git pull      # from remote to local
+git push      # to remote from local
+git add       # stage changes to a commit
+git commit    # commit staged changes
+git checkout  # switch branch or create a new
+git rebase    # rebase commits
+git reset     # reset HEAD | optional --hard
+git reflog    # view your reference logs
 ```
-
 ---
-
-### Git history 📜
-
----
-
-### Create/fork a repo
-```bash
-git init (smth?? kan ikke huske)
-```
-or use [GitHub](https://github.com/)
-
----
-
 
 ### Clone a repo
 
@@ -64,18 +56,6 @@ git clone https://github.com/<username>/<repository>.git
 
 ---
 
-### Merge < Rebase 💢
-
-Keep a maintainable commit history
-
-```bash
-git rebase development
-```
-
-<!-- > ![](https://www.bitsnbites.eu/wp-content/uploads/2015/12/1-nonlinear-vs-linear.png) -->
-> <img src="https://www.bitsnbites.eu/wp-content/uploads/2015/12/1-nonlinear-vs-linear.png" alt="linear vs. non-linear" width="400"/>
-
----
 
 ### Write some awesome code
 
@@ -83,7 +63,7 @@ git rebase development
 
 ---
 
-### Diff 🥐
+### Diff
 
 *look at the improvements*
 
@@ -105,12 +85,30 @@ git diff
 
 ---
 
-### Puuush
+### Commit
+Record your changes to the repository
+```bash
+git add <item> or git add .    # stages your changes
+git commit -m <commit message> # records the changes
+```
+Optional: Amend the commit
+
+```bash
+git commit --amend # if you did an oopsie
+```
+
+---
+
+### Push
 
 Push your new changes to the remote
 
 ```bash
 git push origin <branch-name>
+```
+Optional: Force with lease
+```bash
+git push --force-with-lease origin <branch-name>
 ```
 
 ---
@@ -126,10 +124,45 @@ git pull
 <!-- .slide: data-background="https://c.tenor.com/6iq8JGtbYZ8AAAAd/cat-drag.gif" data-background-opacity="0.4" -->
 ---
 
-### Conflict 
+### Branching
+
+Jump to a branch or create a new one
+
+Using feature-branches helps with scalability
+
+```bash
+git checkout <branch-name>    # checkout existing branch
+git checkout -b <branch-name> # create a new branch
+```
+Optional: Tag the branch 
+
+```bash
+git checkout -b feature/<branch-name>
+```
+---
+
+
+### Merge < Rebase*
+
+Keep a maintainable commit history
+
+```bash
+git rebase development
+```
+
+> <img src="https://www.bitsnbites.eu/wp-content/uploads/2015/12/1-nonlinear-vs-linear.png" alt="linear vs. non-linear" width="400"/>
+
+*personal taste
+
+---
+
+
+### Merge conflicts 💢
+
+Conflicts will happen when multiple people work together
 
 ```diff
-<<<<<<< HEAD
+<<<<<<< HEAD (Current Change)
 const someList = [1, '2', 3, '4']
 for (x of something) {
     console.log('how to javskript?', x)
@@ -138,7 +171,7 @@ for (x of something) {
 some_list = [1, '2', 3, '4']
 for x in something:
     print('python > javascript', x)
->>>>>>> Incomming
+>>>>>>> (Incoming Changes)
 ```
 
 ---
@@ -147,26 +180,27 @@ for x in something:
 ### Reflog 📓
 ```bash
 git reflog
+git reset --hard <commit>
 ```
 Good for CTRL - Z when you messed up locally.
 ---
 
-### Assignment 👷
+### Exercise 1 👷
 Linear history (to and from master)  
 15 minutes
 
-1. Create a repository from template
+1. Create a repository from [template](https://github.com/AndreasPB/large-systems-template)
 2. Clone the repository
+4. Edit and commit the same lines (create a conflict)
 3. Push and pull changes
-4. Edit the same lines (create a conflict)
 5. Solve conflict
 
 ---
 
-### Assignment 2 👷
+### Exercise 2 👷
 Semi-linear (using feature branches)  
 15 minutes
 
-1. Create a feature branch
-2. Push feature
-3. Review and merge feature
+1. Checkout to a feature branch
+2. Add, commit and push a feature
+3. Review and merge feature on [GitHub](https://github.com)
